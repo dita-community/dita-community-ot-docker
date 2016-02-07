@@ -1,4 +1,4 @@
-FROM ditacommunity/dita-ot-base
+FROM ditacommunity/dita-ot-base:1.8.5
 # Make the whole OT itself available
 USER root
 VOLUME /opt/dita-ot/DITA-OT

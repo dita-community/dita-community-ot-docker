@@ -1,11 +1,10 @@
-FROM ditaot/dita-ot-base
+FROM ditaot/dita-ot-base:1.8.5
 #
 # Sets up a DITA-OT container
 # with all of the DITA Community 
 # open toolkit plugins integrated.
-USER dita-ot
 WORKDIR ${DITA_HOME}
-ENV DITA_COMM_URL=https://github.com/dita-community/ BRANCH=master
+ENV DITA_COMM_URL=https://github.com/dita-community/ BRANCH=develop
 #
 # Common XSLT
 #
@@ -23,9 +22,9 @@ RUN wget ${DITA_COMM_URL}org.dita-community.pdf-dl-as-dl/archive/${BRANCH}.zip &
 #
 # Preprocessing extensions: (Not yet working with OT 2.2.2)
 #
-#RUN wget ${DITA_COMM_URL}org.dita-community.adjust-copy-to/archive/${BRANCH}.zip && unzip ${BRANCH}.zip -d plugins && rm ${BRANCH}.zip
-#RUN wget ${DITA_COMM_URL}org.dita-community.xhtml-adjct/archive/${BRANCH}.zip && unzip ${BRANCH}.zip -d plugins && rm ${BRANCH}.zip
-#RUN wget ${DITA_COMM_URL}org.dita-community.preprocess-extensions/archive/${BRANCH}.zip && unzip ${BRANCH}.zip -d plugins && rm ${BRANCH}.zip
+RUN wget ${DITA_COMM_URL}org.dita-community.adjust-copy-to/archive/${BRANCH}.zip && unzip ${BRANCH}.zip -d plugins && rm ${BRANCH}.zip
+RUN wget ${DITA_COMM_URL}org.dita-community.xhtml-adjct/archive/${BRANCH}.zip && unzip ${BRANCH}.zip -d plugins && rm ${BRANCH}.zip
+RUN wget ${DITA_COMM_URL}org.dita-community.preprocess-extensions/archive/${BRANCH}.zip && unzip ${BRANCH}.zip -d plugins && rm ${BRANCH}.zip
 #
 # Preprocess tester:
 #
